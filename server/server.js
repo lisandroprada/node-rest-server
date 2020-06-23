@@ -39,7 +39,6 @@ app.put('/usuario/:id', (req, res) => {
     });
 });
 
-
 app.delete('/usuario', (req, res) => {
     res.json('Borrar')
 });
