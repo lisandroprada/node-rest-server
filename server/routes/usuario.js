@@ -37,10 +37,10 @@ app.get('/usuario', verificaToken, (req, res) => {
                     ok: true,
                     usuarios,
                     cuantos: conteo
-                })
-            })
+                });
+            });
 
-        })
+        });
 });
 
 app.post('/usuario', [verificaToken, verificaAdminRole], (req, res) => {
@@ -60,13 +60,11 @@ app.post('/usuario', [verificaToken, verificaAdminRole], (req, res) => {
             });
         }
 
-        // usuarioDB.password = null;
-
         res.json({
             ok: true,
             usuario: usuarioDB
         });
-    })
+    });
 
 });
 
@@ -102,7 +100,7 @@ app.delete('/usuario/:id', [verificaToken, verificaAdminRole], function(req, res
 
     Usuario.findByIdAndUpdate(id, body, { new: true }, (err, usuarioBorrado) => {
         if (err) {
-            return res.status(400).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
